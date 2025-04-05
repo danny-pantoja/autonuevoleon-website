@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<br></br>
+    <div class="container">
+        <div class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{{ product.image.url }}" class="img-fluid rounded-start" alt="...">
+              </div>
+                  <div class="col-md-8">
+                    <center>
+                      <div class="card-body">
+                      <h5 class="card-title">{{ product.name }}</h5>
+                      <p class="card-text">{{ product.description }}</p>
+
+                        {% if product.is_sale %}
+
+                        <!-- Product sale price-->
+                        <h4>Sale</h4>
+                        <strike>${{ product.price }}</strike> &nbsp;${{ product.sale_price }}
+
+                        {% else %}
+                        {{ product.price }}
+                        {% endif %}
+                        
+                        <br></br>
+
+                      <a href="{% url 'home'  %}" class="btn btn-secondary">Home</a>
+                    </center>
+                  </div>
+              </div>
+           </div>
+        </div>
+    </div>
+<br></br>
+<br></br>
+<br></br>
+
+{% endblock %}
