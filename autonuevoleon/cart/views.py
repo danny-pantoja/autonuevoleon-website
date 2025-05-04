@@ -11,14 +11,22 @@ def cart_add(request):
     cart = Cart(request)
     # test for POST
     if request.POST.get('action') == 'post':
-        # Get product id
-        producy_id = int(request.POST.get('product_id'))
+        # Get product stuff
+        product_id = int(request.POST.get('product_id'))
+        #product_qty = int(request.POST.get('product_qty'))
         # Look up product in DB
-        product = get_object_or_404(Product, id=producy_id)
+        product = get_object_or_404(Product, id=product_id)
         # Save to a session
-        cart.add(product=product)
+        cart.add(product=product) #quantity=product_qty)
+
+        # Get cart quantity
+        cart_quantity = cart.__len__()
+
+
         # Return response
-        response = JsonResponse({ 'Product Name: ': product.name })
+        # response = JsonResponse({ 'Product Name: ': product.name })
+        response = JsonResponse({'qty': cart_quantity})
+
         return response
 
 
