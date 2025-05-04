@@ -10,17 +10,12 @@ class Cart():
         # Making cart available to all pages of site
         self.cart = cart
 
-    def add_item(self, item):
-        self.items.append(item)
+    def add(self, product):
+        product_id = str(product.id)
+        # Logic
+        if product_id in self.cart:
+            pass
+        else:
+            self.cart[product_id] = {'price': str(product.price)}
 
-    def remove_item(self, item):
-        self.items.remove(item)
-
-    def clear_cart(self):
-        self.items = []
-
-    def get_items(self):
-        return self.items
-
-    def get_total_price(self):
-        return sum(item['price'] for item in self.items)
+        self.session.modified = True
