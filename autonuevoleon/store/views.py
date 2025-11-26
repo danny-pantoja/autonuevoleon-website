@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm, UpdateUserForm, ChangePasswordForm, UserInfoForm
-from payment.forms import ShippingForms
+from payment.forms import ShippingForm
 from payment.models import ShippingAddress
 from django import forms
 from django.db.models import Q
@@ -33,7 +33,7 @@ def update_info(request):
         current_user = Profile.objects.get(user__id=request.user.id)
         shipping_user = ShippingAddress.objects.get(user__id=request.user.id)
         form = UserInfoForm(request.POST or None, instance=current_user)
-        shipping_form = ShippingForms(request.POST or None, instance=shipping_user)
+        shipping_form = ShippingForm(request.POST or None, instance=shipping_user)
 
         if form.is_valid() or shipping_form.is_valid():
             form.save()

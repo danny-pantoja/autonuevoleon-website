@@ -1,0 +1,63 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<br/><br/><br/><br/>
+<br/><br/>
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    Order Summary
+                </div>
+                <div class="card-body">
+                    {% for product in cart_products %}
+                        {{ product.name }}:
+                            {% if product.is_sale %}
+                                ${{ product.sale_price }}
+                            {% else %}
+                                ${{ product.price }}
+                            {% endif %}
+                            <br/>
+                        <small>Quantity:
+                        {% for key, value in quantities.items %}
+                            {% if key == product.id|slugify %}
+                                {{ value }}
+                            {% endif %}
+                        {% endfor %}</small>    
+                        <br/><br/>
+                    {% endfor %}
+                    
+                    Total: ${{ totals }}
+                    <br/><br/>
+                    <a href="{% url 'cart_summary' %}" class="btn btn-sm btn-outline-secondary">Update Cart Items</a>
+                </div>
+            </div>
+            <br/><br/>
+                <div class="card">
+                    <div class="card-header">
+                        Shipping Info
+                    </div>
+                    <div class="card-body">
+                        {{ shipping_form.as_p }}
+                    </div>
+                </div>
+                <br/>
+                <a href="#" class="btn btn-secondary">Continue to Billing</a>
+        </div>
+            
+    </div>
+
+</div>
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<script>
+
+</script>
+
+{% endblock %}
