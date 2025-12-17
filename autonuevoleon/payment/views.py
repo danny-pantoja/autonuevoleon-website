@@ -133,6 +133,11 @@ def process_order(request):
                     # Delete the key
                     del request.session[key]
 
+            # Get user info
+            current_user = Profile.objects.filter(user__id=request.user.id)
+            # Delete Cart from Database (old_cart field)
+            current_user.update(old_cart="")
+
             messages.success(request, "Order Placed")
             return redirect('home')
         
