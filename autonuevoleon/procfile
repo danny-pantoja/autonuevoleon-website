@@ -1,2 +1,2 @@
-web:gunicorn store .wgsi --log-file
-web:python manage.py migrate && gunicorn store.wsg
+web: gunicorn store.wgsi --log-file
+web: python manage.py migrate && gunicorn store.wsg
