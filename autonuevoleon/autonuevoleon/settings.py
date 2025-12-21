@@ -20,8 +20,8 @@ SECRET_KEY = os.environ['DB_SECRET_PW']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-CSRF_TRUSTED_ORIGINS = []
+ALLOWED_HOSTS = ['autonuevoleon-website-production.up.railway.app', 'https://autonuevoleon-website-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://autonuevoleon-website-production.up.railway.app']
 
 
 # Application definition
@@ -83,8 +83,8 @@ DATABASES = {
         'NAME': 'railway',
         'USER': 'postgres',
         'PASSWORD': os.environ['DB_PASSWORD_YO'],
-        'HOST': 'postgres.railway.internal',
-        'PORT': '5432',
+        'HOST': 'metro.proxy.rlwy.net',
+        'PORT': '34418',
     }
 }
 
