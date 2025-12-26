@@ -9,6 +9,7 @@ load_dotenv()
 
 # password DB
 DB_PASSWORD_YO = os.environ['DB_PASSWORD_YO']
+DB_SECRET_PW = os.environ['DB_SECRET_PW']
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-#s%l#!6g#&=ml6@i@k88tfwzc4v28z57v%u4ml#lw5ngo#1(=1'
+SECRET_KEY = DB_SECRET_PW
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
